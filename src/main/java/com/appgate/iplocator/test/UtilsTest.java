@@ -6,7 +6,7 @@ import com.appgate.iplocator.utils.LocatorUtils;
 /**
  * Clase de prueba de las utilidades de LocatorUtils
  * 
- * @author hjdiazl
+ * @author accusor
  *
  */
 public class UtilsTest {

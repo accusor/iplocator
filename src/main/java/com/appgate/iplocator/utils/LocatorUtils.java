@@ -1,5 +1,12 @@
 package com.appgate.iplocator.utils;
 
+
+/**
+ * Clase para mantener utilidades varias de la aplicacion
+ * 
+ * @author accusor
+ *
+ */
 public class LocatorUtils {
 
 	private static final String IP_PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
