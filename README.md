@@ -139,7 +139,7 @@ Este servicio devuelve la información del estado de carga del archivo. Se envia
    proceso que se está corriendo del archivo. En caso que no se esté ejecutando se recibe `--`
    * `totalRecords`: Se recibe un `Long` indicando el número de registros que se han registrado en la base de datos
 
-###### ii. ranges
+###### iii. ranges
 Este servicio retorna en el campo `data` un listado de todas las entidades `Range` que se encuentren en la base de datos 
    
 En caso que no se encuentre entidades `Range` en la base de datos, se devolvera un objeto de error dentro del 
@@ -149,7 +149,7 @@ listado `errors` con las siguiente información:
    * `detail`: There are no Range elements on Database
    * `source`: CLIENT
    
-###### iii. ranges/{id}
+###### iv. ranges/{id}
 Este servicio retorna en el campo `data` la entidad `Range` que se encuentren en la base de datos que tenga el `id` enviado
 en el parámetro
    
@@ -160,7 +160,7 @@ listado `errors` con las siguiente información:
    * `detail`: Range could not be found on Database with givend id
    * `source`: CLIENT
    
-###### iv. locations
+###### v. locations
 Este servicio retorna en el campo `data` un listado de todas las entidades `Location` que se encuentren en la base de datos 
    
 En caso que no se encuentre entidades `Location` en la base de datos, se devolvera un objeto de error dentro del 
@@ -170,7 +170,7 @@ listado `errors` con las siguiente información:
    * `detail`: There are no Location elements on Database
    * `source`: CLIENT
    
-###### v. locations/{id}
+###### vi. locations/{id}
 Este servicio retorna en el campo `data` la entidad `Location` que se encuentren en la base de datos que tenga el `id` enviado
 en el parámetro
    
@@ -180,3 +180,30 @@ listado `errors` con las siguiente información:
    * `title`: Location not Found
    * `detail`: Location could not be found on Database with givend id
    * `source`: CLIENT
+   
+###### vii. getLocationByIp/{ip}
+Este servicio retorna en el campo `data` la entidad `Location` que se encuentren en la base de datos cuya `ip` se encuentre en
+un rango válido y dentro de la información de la geolocalización
+
+En caso que no se encuentre la entidad `Location` con dicho parámetro en la base de datos, se devolvera un objeto de error dentro del 
+listado `errors` con las siguiente información:
+   * `code`: 1000
+   * `title`: IP Address not found
+   * `detail`: IP Address could not be found on Database
+   * `source`: CLIENT
+   
+En caso que se envie una `ip` que no tenga un formato IPv4 válido, se devolvera un objeto de error dentro del listado `errors`
+con las siguiente información:
+   * `code`: 1001
+   * `title`: Invalid IP Adress
+   * `detail`: Invalid IP Address. Make sure you're sending a valid IPv4 IP Address
+   * `source`: CLIENT
+
+###### vii. Siguientes pasos
+Las siguientes mejoras se pensaron para la aplicación, pero no se desarrollaron debido a la premura para terminar el desarrollo
+* Que el archivo se pueda enviar a través de un método PUT como parte de proceso del método loadDatabase
+* Que el proceso del métodop loadDatabase sea asincrono, para mostrarle al usuario un mensaje indicando que se inicio
+la carga del archivo, y no se quede esperando una respuesta que puede demorarse de acuerdo al tamaño del archivo carga
+* Incluir en la auditoria de los llamados al servicio la información del tiempo que tomó el proceso de la transacción, y si
+el mismo generó algún tipo de error
+* Depurar la información de las transacciones SQL que se envían al log ya que por el momento se envían todos los llamados
