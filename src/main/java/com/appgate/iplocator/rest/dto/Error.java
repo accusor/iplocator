@@ -69,7 +69,7 @@ public class Error {
 		
 		error = new Error();
 		error.setCode(Error.COD_RNG_NOT_FOUND);
-		error.setTitle("Process already runnning");
+		error.setTitle("Range not Found");
 		error.setDetail("Range could not be found on Database with givend id");
 		error.setSource(Error.SOURCE_CLIENT);
 		ERROR_LIST.put(Error.COD_RNG_NOT_FOUND, error);
