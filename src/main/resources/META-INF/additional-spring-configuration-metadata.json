@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "iplocator.filepath",
+  "type": "java.lang.String",
+  "description": "Ubicacion del archivo a cargar"
+}]}

@@ -1,17 +1,21 @@
 package com.appgate.iplocator.dto;
 
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.appgate.iplocator.utils.GsonUtils;
 
 @Entity
 public class Location {
 
-	private @Id @GeneratedValue Long idRange;
+	private @Id @GeneratedValue Long idLocation;
 	private String countryCode;
 	private String country;
 	private String region;
@@ -19,6 +23,9 @@ public class Location {
 	private Double latitude;
 	private Double longitude;
 	private String isp;
+	
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "location")
+	private Set<Range> ranges;
 	
 	public Location() {
 	}
@@ -34,12 +41,12 @@ public class Location {
 		this.isp = isp;
 	}
 
-	public Long getIdRange() {
-		return idRange;
+	public Long getIdLocation() {
+		return idLocation;
 	}
 
-	public void setIdRange(Long idRange) {
-		this.idRange = idRange;
+	public void setIdLocation(Long idRange) {
+		this.idLocation = idRange;
 	}
 
 	public String getCountryCode() {
@@ -107,7 +114,7 @@ public class Location {
 			return false;
 		}
 		Location other = (Location) obj;
-		return Objects.equals(this.idRange, other.idRange) &&
+		return Objects.equals(this.idLocation, other.idLocation) &&
 			   Objects.equals(this.countryCode, other.countryCode) &&
 			   Objects.equals(this.country, other.country) &&
 			   Objects.equals(this.region, other.region) &&
@@ -119,7 +126,7 @@ public class Location {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.idRange, this.countryCode, this.country, this.region,
+		return Objects.hash(this.idLocation, this.countryCode, this.country, this.region,
 				this.city, this.latitude, this.longitude, this.isp);
 	}
 	
