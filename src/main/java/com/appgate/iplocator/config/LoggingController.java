@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.appgate.iplocator.utils.GsonUtils;
-
 @RestController
 public class LoggingController {
 
@@ -36,7 +34,7 @@ public class LoggingController {
 	}
 	
 	public static void setInfo(String msg, Object object) {
-		logger.info(msg + "\n Object: " + GsonUtils.toJson(object));
+		logger.info(msg);
 	}
 	
 }

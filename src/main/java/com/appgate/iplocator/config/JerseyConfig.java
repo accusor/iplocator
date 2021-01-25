@@ -13,6 +13,7 @@ public class JerseyConfig extends ResourceConfig {
 	
 	public JerseyConfig() {
 		register(IpLocatorResource.class);
+		register(RequestLoggingFilter.class);
 	}
 	
 }

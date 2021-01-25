@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.appgate.iplocator.utils.GsonUtils;
+
 @Entity
 public class Range {
 	
@@ -62,4 +64,8 @@ public class Range {
 		this.location = location;
 	}
 	
+	@Override
+	public String toString() {
+		return GsonUtils.toJson(this);
+	}
 }

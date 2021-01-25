@@ -17,6 +17,11 @@ public class Error {
 	public static final Integer COD_UNKNOWN_ERROR = 9999;
 	public static final Integer COD_IP_NOT_FOUND = 1000;
 	public static final Integer COD_INVALID_IP_FORMAT = 1001;
+	public static final Integer COD_PROC_RUNNING = 2000;
+	public static final Integer COD_LOC_NOT_FOUND = 4000;
+	public static final Integer COD_LOC_EMPTY = 4001;
+	public static final Integer COD_RNG_NOT_FOUND = 5000;
+	public static final Integer COD_RNG_EMPTY = 5001;
 	
 	private static Map<Integer, Error> ERROR_LIST = new HashMap<Integer, Error>();
 	static {
@@ -42,11 +47,39 @@ public class Error {
 		ERROR_LIST.put(Error.COD_INVALID_IP_FORMAT, error);
 		
 		error = new Error();
-		error.setCode(Error.COD_INVALID_IP_FORMAT);
-		error.setTitle("Invalid IP Adress");
-		error.setDetail("Invalida IP Address. Make sure you're sending a valid IPv4 IP Address");
+		error.setCode(Error.COD_PROC_RUNNING);
+		error.setTitle("Process already runnning");
+		error.setDetail("There's an instance of the process already running. Please wait for it to finish");
 		error.setSource(Error.SOURCE_CLIENT);
-		ERROR_LIST.put(Error.COD_INVALID_IP_FORMAT, error);
+		ERROR_LIST.put(Error.COD_PROC_RUNNING, error);
+		
+		error = new Error();
+		error.setCode(Error.COD_LOC_NOT_FOUND);
+		error.setTitle("Location not Found");
+		error.setDetail("Location could not be found on Database with givend id");
+		error.setSource(Error.SOURCE_CLIENT);
+		ERROR_LIST.put(Error.COD_LOC_NOT_FOUND, error);
+		
+		error = new Error();
+		error.setCode(Error.COD_LOC_EMPTY);
+		error.setTitle("Location: empty Database");
+		error.setDetail("There are no Location elements on Database");
+		error.setSource(Error.SOURCE_CLIENT);
+		ERROR_LIST.put(Error.COD_LOC_EMPTY, error);
+		
+		error = new Error();
+		error.setCode(Error.COD_RNG_NOT_FOUND);
+		error.setTitle("Process already runnning");
+		error.setDetail("Range could not be found on Database with givend id");
+		error.setSource(Error.SOURCE_CLIENT);
+		ERROR_LIST.put(Error.COD_RNG_NOT_FOUND, error);
+		
+		error = new Error();
+		error.setCode(Error.COD_RNG_EMPTY);
+		error.setTitle("Range: empty Database");
+		error.setDetail("There are no Range elements on Database");
+		error.setSource(Error.SOURCE_CLIENT);
+		ERROR_LIST.put(Error.COD_RNG_EMPTY, error);
 		
 	}
 
